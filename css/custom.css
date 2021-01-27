@@ -1,0 +1,24 @@
+body{
+    background-color: #bebebe;
+}
+.carcaplow {
+    position: static;
+    y: -500;
+}
+.icon-color {
+    background-color:#94536d !important;
+}
+#background {
+    background-image: url(#!);
+    min-height: 100vh;
+    background-origin: inherit;
+}
+#qr {
+    padding: 2%;
+    background-color: rgba(0, 0, 0, .4);
+    margin-top: -8%;
+    }
+#support {
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+}
