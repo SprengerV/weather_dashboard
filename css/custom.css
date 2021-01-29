@@ -1,6 +1,9 @@
 body{
     background-color: #bebebe;
 }
+.fiveDay{
+    min-height: 100px;
+}
 .carcaplow {
     position: static;
     y: -500;
@@ -13,12 +16,25 @@ body{
     min-height: 100vh;
     background-origin: inherit;
 }
+#current {
+    min-height: 400px;
+    margin-top: 20px;
+}
 #qr {
     padding: 2%;
     background-color: rgba(0, 0, 0, .4);
     margin-top: -8%;
     }
+#s {
+    font-family: 'Shadows Into Light', cursive;
+}
 #support {
     margin-top: 15vh;
     margin-bottom: 5vh;
+}
+#v {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 28px;
+    font-weight: bold;
+    color: red;
 }
