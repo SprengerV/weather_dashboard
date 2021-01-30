@@ -63,14 +63,13 @@ function getCoords(query){
         const weatherURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=4fee5100753d9c5843938d03bf31bfce'
         $.get(weatherURL).then(function(data){
             console.log(data);
-        })
+        day0 = dayjs.unix(data.daily[0].dt).format('M/D/YY');
+        $('#date').text(`(${day0})`);
+        for(i=0;i<5;i++){
+            $('#day'+i).text(dayjs.unix(data.daily[i].dt).format('ddd, MMM D'));
+        }
+        });
     });
     
 };
 
-function displayCity(){
-    const weatherURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=4fee5100753d9c5843938d03bf31bfce'
-    $.get(weatherURL).then(function(data){
-        console.log(data);
-    })
-};

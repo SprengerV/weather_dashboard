@@ -89,11 +89,21 @@
         <div class='col-9 ms-0 me-0 container'>
           <!-- 5-day forecast -->
           <div class='row d-flex justify-content-around'>
-            <div id='day0' class='card col-2 bg-primary fiveDay'></div>
-            <div id='day1' class='card col-2 bg-primary fiveDay'></div>
-            <div id='day2' class='card col-2 bg-primary fiveDay'></div>
-            <div id='day3' class='card col-2 bg-primary fiveDay'></div>
-            <div id='day4' class='card col-2 bg-primary fiveDay'></div>
+            <div id='0' class='card col mx-1 bg-primary text-light fiveDay'>
+              <h5 id='day0'></h5>
+            </div>
+            <div id='1' class='card col mx-1 bg-primary text-light fiveDay'>
+              <h5 id='day1'></h5>
+            </div>
+            <div id='2' class='card col mx-1 bg-primary text-light fiveDay'>
+              <h5 id='day2'></h5>
+            </div>
+            <div id='3' class='card col mx-1 bg-primary text-light fiveDay'>
+              <h5 id='day3'></h5>
+            </div>
+            <div id='4' class='card col mx-1 bg-primary text-light fiveDay'>
+              <h5 id='day4'></h5>
+            </div>
           </div>
           <div class='row'>
             <div id='current' class='card col-10 container'>
@@ -133,6 +143,8 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+  <!-- day.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
   <!-- Custom scripts -->
   <script type="text/javascript" src='js/myjava.js'></script>
 </html>
