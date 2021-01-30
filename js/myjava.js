@@ -1,10 +1,12 @@
 let cities = ['concord','albany','sacramento']
 let query
-localStorage.setItem('savedCities',JSON.stringify(cities));
-const saved = JSON.parse(localStorage.getItem('savedCities'));
+// localStorage.setItem('savedCities',JSON.stringify(cities));
+let saved = JSON.parse(localStorage.getItem('savedCities'));
 
-
-
+clearAll = () => {
+    $('#city').text('');
+    $('#date').text('');
+}
 loadSaved = () => {
     $('#cityList').empty();
     console.log(saved);
@@ -18,8 +20,13 @@ loadSaved = () => {
             $('#cityList').append(div);
         };
     };
+    $('.city').on('click',function(){
+        query = $(this).text();
+        console.log(query);
+        getCoords(query);
+    });
 };
-
+clearAll();
 // everything happens on page load
 $(window).on('load',function(){
     loadSaved();
@@ -31,17 +38,13 @@ $(window).on('load',function(){
         console.log(query);
         if(query){
             getCoords(query);
-            saved.unset(query);
+            console.log(saved)
+            saved.unshift(query);
             localStorage.setItem('savedCities', JSON.stringify(saved));
         };
         loadSaved();
-        getCoords(saved[0]);
     });
-    $('.city').on('click',function(){
-        query = $(this).text();
-        console.log(query);
-        getCoords(query);
-    })
+
 });
 
 function getCoords(query){
@@ -54,6 +57,7 @@ function getCoords(query){
         }
       }).then(function(response) {
         console.log(response.data);
+        $('#city').text(response.data[0].label);
         const lat = response.data[0].latitude;
         const lon = response.data[0].longitude;
         const weatherURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=4fee5100753d9c5843938d03bf31bfce'
