@@ -26,6 +26,12 @@ loadSaved = () => {
         getCoords(query);
     });
 };
+convert = (k) => {
+    var c = parseInt(k)-273.15;
+    var f = Math.round((9*c/5)+32);
+    return f     
+}
+
 clearAll();
 // everything happens on page load
 $(window).on('load',function(){
@@ -47,6 +53,7 @@ $(window).on('load',function(){
 
 });
 
+
 function getCoords(query){
     $.ajax({
         url: 'http://api.positionstack.com/v1/forward',
@@ -65,8 +72,14 @@ function getCoords(query){
             console.log(data);
         day0 = dayjs.unix(data.daily[0].dt).format('M/D/YY');
         $('#date').text(`(${day0})`);
+        // fetch and push 5 day forecast
         for(i=0;i<5;i++){
-            $('#day'+i).text(dayjs.unix(data.daily[i].dt).format('ddd, MMM D'));
+            const daily = data.daily[i];
+            $('#day'+i).text(dayjs.unix(daily.dt).format('ddd, MMM D'));
+            $('#hi'+i).text(`H: ${convert(daily.temp.max)}°F`);
+            $('#low'+i).text(`L: ${convert(daily.temp.min)}°F`);
+            $('#con'+i).text(daily.weather[0].description);
+            $('#icon'+i).attr('src','http://openweathermap.org/img/wn/'+daily.weather[0].icon+'@2x.png');
         }
         });
     });
