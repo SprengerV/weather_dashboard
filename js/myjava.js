@@ -4,8 +4,15 @@ let query
 let saved = JSON.parse(localStorage.getItem('savedCities'));
 
 clearAll = () => {
-    $('#city').text('');
+    $('#city').text('Search a city for weather info');
     $('#date').text('');
+    $('#temp').text('Temperature: ');
+    $('#hum').text('Humidity: ');
+    $('#wind').text('Wind: ');
+    $('#uv').text('UV Index: ');
+    $('#uvi').text('');
+    $('#uvi').attr('class','');
+    $('#icon').attr('src','');
 }
 loadSaved = () => {
     $('#cityList').empty();
@@ -26,11 +33,13 @@ loadSaved = () => {
         getCoords(query);
     });
 };
-convert = (k) => {
+// convert Kelvin to Fahrenheit
+convertKelvin = (k) => {
     var c = parseInt(k)-273.15;
     var f = Math.round((9*c/5)+32);
     return f     
 }
+
 
 clearAll();
 // everything happens on page load
@@ -53,7 +62,7 @@ $(window).on('load',function(){
 
 });
 
-
+// API call to search input query and find coordinates
 function getCoords(query){
     $.ajax({
         url: 'http://api.positionstack.com/v1/forward',
@@ -62,25 +71,49 @@ function getCoords(query){
           query: query,
           limit: 1
         }
-      }).then(function(response) {
+    }).then(function(response) {
         console.log(response.data);
-        $('#city').text(response.data[0].label);
+        
         const lat = response.data[0].latitude;
         const lon = response.data[0].longitude;
-        const weatherURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=4fee5100753d9c5843938d03bf31bfce'
+        // insert coordinates into API call for weather
+        const weatherURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&units=imperial&appid=4fee5100753d9c5843938d03bf31bfce';
         $.get(weatherURL).then(function(data){
             console.log(data);
-        day0 = dayjs.unix(data.daily[0].dt).format('M/D/YY');
-        $('#date').text(`(${day0})`);
-        // fetch and push 5 day forecast
-        for(i=0;i<5;i++){
-            const daily = data.daily[i];
-            $('#day'+i).text(dayjs.unix(daily.dt).format('ddd, MMM D'));
-            $('#hi'+i).text(`H: ${convert(daily.temp.max)}°F`);
-            $('#low'+i).text(`L: ${convert(daily.temp.min)}°F`);
-            $('#con'+i).text(daily.weather[0].description);
-            $('#icon'+i).attr('src','http://openweathermap.org/img/wn/'+daily.weather[0].icon+'@2x.png');
-        }
+            clearAll();
+            // get current weather and push to page
+            const current = data.current
+            $('#city').text(response.data[0].label);
+            $('#date').text(`(${dayjs.unix(current.dt).format('M/D/YY')})`);
+            $('#icon').attr('src','http://openweathermap.org/img/wn/'+current.weather[0].icon+'@2x.png');
+            $('#temp').text(`Temperature: ${current.temp}°F`);
+            $('#hum').text(`Humidity: ${current.humidity}%`);
+            $('#wind').text(`Wind: ${current.wind_deg}°, ${current.wind_speed} MPH`);
+            // check UV index, add a class based on range
+            const uvi = parseInt(current.uvi);
+            const uv = $('#uvi');
+            uv.text(uvi);
+            if(uvi < 3){
+                uv.addClass('low');
+            }else if(uvi >= 3 && uvi < 6){
+                uv.addClass('mod');
+            }else if(uvi >= 6 && uvi < 8){
+                uv.addClass('high');
+            }else if(uvi >= 8 && uvi < 10){
+                uv.addClass('vhigh');
+            }else if(uvi >= 10){
+                uv.addClass('extr');
+            };        
+            // fetch and push 5 day forecast
+            for(i=0;i<5;i++){
+                const daily = data.daily[i];
+                $('#day'+i).text(dayjs.unix(daily.dt).format('ddd, MMM D'));
+                $('#hi'+i).text(`H: ${daily.temp.max}°F`);
+                $('#low'+i).text(`L: ${daily.temp.min}°F`);
+                $('#hum'+i).text(`Humidity: ${daily.humidity}%`);
+                $('#con'+i).text(daily.weather[0].description);
+                $('#icon'+i).attr('src','http://openweathermap.org/img/wn/'+daily.weather[0].icon+'@2x.png');
+            };
         });
     });
     

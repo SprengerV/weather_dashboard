@@ -11,6 +11,21 @@ body{
 .icon-color {
     background-color:#94536d !important;
 }
+.extr {
+    background-color: indigo;
+}
+.high {
+    background-color: orange;
+}
+.low {
+    background-color: green;
+}
+.mod {
+    background-color: yellow;
+}
+.vhigh {
+    background-color: red;
+}
 #background {
     background-image: url(#!);
     min-height: 100vh;
@@ -31,6 +46,11 @@ body{
 #support {
     margin-top: 15vh;
     margin-bottom: 5vh;
+}
+#uvi {
+    color: white;
+    padding: 2px 5px 2px 5px;
+    border-radius: 2px;
 }
 #v {
     font-family: 'Abril Fatface', cursive;
