@@ -14,6 +14,9 @@ body{
 .extr {
     background-color: indigo;
 }
+.fiveDay {
+    min-height: 150px;
+}
 .high {
     background-color: orange;
 }
@@ -26,6 +29,10 @@ body{
 .vhigh {
     background-color: red;
 }
+#fiveDay {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
 #background {
     background-image: url(#!);
     min-height: 100vh;
@@ -33,7 +40,6 @@ body{
 }
 #current {
     min-height: 400px;
-    margin-top: 20px;
 }
 #qr {
     padding: 2%;
@@ -57,4 +63,7 @@ body{
     font-size: 28px;
     font-weight: bold;
     color: red;
+}
+#weather {
+    font-size: 24px;
 }

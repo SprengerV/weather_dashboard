@@ -88,76 +88,128 @@
         <!-- main dashboard -->
         <div class='col-9 ms-0 me-0 container'>
           <!-- 5-day forecast -->
-          <div class='row d-flex justify-content-around'>
-            <div id='0' class='card col mx-1 bg-primary text-light fiveDay'>
-              <h5 id='day0'></h5>
-              <span id='hi0' class='temps'></span>
-              <span id='low0' class='temps'></span>
-              <span id='hum0'></span>
-              <img id='icon0' class='icon'/>
-              <span id='con0'></span>
+          <div id='fiveDay' class='row d-flex justify-content-around'>
+            <div id='0' class='container card col mx-1 bg-primary text-light fiveDay'>
+              <div class='row'>
+                <h5 id='day0' class='col-12 col-sm-10'></h5>
+              </div>
+              <div class='row'>
+                <span id='hi0' class='col-md-6 temps'></span>
+                <span id='low0' class='col-md-6 temps'></span>
+              </div>
+              <div class='row'>
+                <span id='hum0' class='col-12 col-md-10'></span>
+              </div>
+              <div class='row'>
+                <img id='icon0' class='col-md-6 ms-auto me-0 icon'/>
+              </div>
+              <div class='row'>
+                <span id='con0' class='col-12 col-md-10'></span>
+              </div>
             </div>
             <div id='1' class='card col mx-1 bg-primary text-light fiveDay'>
-              <h5 id='day1'></h5>
-              <span id='hi1' class='temps'></span>
-              <span id='low1' class='temps'></span>
-              <span id='hum1'></span>
-              <img id='icon1' class='icon'/>
-              <span id='con1'></span>
+              <div class='row'>
+                <h5 id='day1' class='col-12 col-sm-10'></h5>
+              </div>
+              <div class='row'>
+                <span id='hi1' class='col-md-6 temps'></span>
+                <span id='low1' class='col-md-6 temps'></span>
+              </div>
+              <div class='row'>
+                <span id='hum1' class='col-12 col-md-10'></span>
+              </div>
+              <div class='row'>
+                <img id='icon1' class='col-md-6 ms-auto me-0 icon'/>
+              </div>
+              <div class='row'>
+                <span id='con1' class='col-12 col-md-10'></span>
+              </div>
             </div>
             <div id='2' class='card col mx-1 bg-primary text-light fiveDay'>
-              <h5 id='day2'></h5>
-              <span id='hi2' class='temps'></span>
-              <span id='low2' class='temps'></span>
-              <span id='hum2'></span>
-              <img id='icon2' class='icon'/>
-              <span id='con2'></span>
+              <div class='row'>
+                <h5 id='day2' class='col-12 col-sm-10'></h5>
+              </div>
+              <div class='row'>
+                <span id='hi2' class='col-md-6 temps'></span>
+                <span id='low2' class='col-md-6 temps'></span>
+              </div>
+              <div class='row'>
+                <span id='hum2' class='col-12 col-md-10'></span>
+              </div>
+              <div class='row'>
+                <img id='icon2' class='col-md-6 ms-auto me-0 icon'/>
+              </div>
+              <div class='row'>
+                <span id='con2' class='col-12 col-md-10'></span>
+              </div>
             </div>
             <div id='3' class='card col mx-1 bg-primary text-light fiveDay'>
-              <h5 id='day3'></h5>
-              <span id='hi3' class='temps'></span>
-              <span id='low3' class='temps'></span>
-              <span id='hum3'></span>
-              <img id='icon3' class='icon'/>
-              <span id='con3'></span>
+              <div class='row'>
+                <h5 id='day3' class='col-12 col-sm-10'></h5>
+              </div>
+              <div class='row'>
+                <span id='hi3' class='col-md-6 temps'></span>
+                <span id='low3' class='col-md-6 temps'></span>
+              </div>
+              <div class='row'>
+                <span id='hum3' class='col-12 col-md-10'></span>
+              </div>
+              <div class='row'>
+                <img id='icon3' class='col-md-6 ms-auto me-0 icon'/>
+              </div>
+              <div class='row'>
+                <span id='con3' class='col-12 col-md-10'></span>
+              </div>
             </div>
             <div id='4' class='card col mx-1 bg-primary text-light fiveDay'>
-              <h5 id='day4'></h5>
-              <span id='hi4' class='temps'></span>
-              <span id='low4' class='temps'></span>
-              <span id='hum4'></span>
-              <img id='icon4' class='icon'/>
-              <span id='con4'></span>
+              <div class='row'>
+                <h5 id='day4' class='col-12 col-sm-10'></h5>
+              </div>
+              <div class='row'>
+                <span id='hi4' class='col-md-6 temps'></span>
+                <span id='low4' class='col-md-6 temps'></span>
+              </div>
+              <div class='row'>
+                <span id='hum4' class='col-12 col-md-10'></span>
+              </div>
+              <div class='row'>
+                <img id='icon4' class='col-md-6 ms-auto me-0 icon'/>
+              </div>
+              <div class='row'>
+                <span id='con4' class='col-12 col-md-10'></span>
+              </div>
             </div>
           </div>
           <div class='row'>
             <div id='current' class='card col-10 container'>
               <header class='d-flex justify-content-between'>
-                <h1 id='city' class='d-inline-flex'>City</h1>
-                <h1 id='date' class='d-inline-flex'>(SO/ME/DATE)</h1>
+                <h1 id='city' class=''>City</h1>
+                <h1 id='date' class=''>(SO/ME/DATE)</h1>
               </header>
-              <div class='card-body'>
-                <img id='icon'/><br>
-                <span id='temp'></span><br>
-                <span id='hum'></span><br>
-                <span id='wind'></span><br>
-                <span id='uv'></span><span id='uvi'></span>
+              <div class='row card-body d-flex flex-row-reverse align-items-center justify-content-around'>
+                <img id='icon' class='col-5 col-lg-4 align-self-start'/><br>
+                <div id='weather' class='col-6'>
+                  <span id='temp'></span><br>
+                  <span id='hum'></span><br>
+                  <span id='wind'></span><br>
+                  <span id='uv'></span><span id='uvi'></span>
+                </div>
               </div>
             </div>
           </div>
-          <row>
-
-          </row>
+          
         </div>
       </div>
     </main>
     <!-- Content -->
     
     <!-- Footer -->
-    <footer class="bg-dark text-center text-lg-start w-100 position-absolute bottom-0">
+    <footer class="bg-dark text-center text-lg-start w-100 fixed-bottom">
       <!-- Copyright -->
       <div class="text-center p-3 bg-light" >
         Powered by
+        <a class="text-primary" href="http://positionstack.com/">positionstack</a>
+         and 
         <a class="text-primary" href="http://openweathermap.org/">OpenWeather API</a>
       </div>
       <!-- Copyright -->

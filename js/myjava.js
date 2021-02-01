@@ -1,6 +1,4 @@
-let cities = ['concord','albany','sacramento']
 let query
-// localStorage.setItem('savedCities',JSON.stringify(cities));
 let saved = JSON.parse(localStorage.getItem('savedCities'));
 
 clearAll = () => {
@@ -45,7 +43,11 @@ clearAll();
 // everything happens on page load
 $(window).on('load',function(){
     loadSaved();
-    getCoords(saved[0]);
+    if(saved){
+        getCoords(saved[0]);
+    }else{
+        saved = [];
+    };
     // clicking the search button
     $('#searchBtn').on('click', function(event){
         event.preventDefault();
@@ -108,8 +110,8 @@ function getCoords(query){
             for(i=0;i<5;i++){
                 const daily = data.daily[i];
                 $('#day'+i).text(dayjs.unix(daily.dt).format('ddd, MMM D'));
-                $('#hi'+i).text(`H: ${daily.temp.max}°F`);
-                $('#low'+i).text(`L: ${daily.temp.min}°F`);
+                $('#hi'+i).text(`H: ${Math.round(daily.temp.max)}°F`);
+                $('#low'+i).text(`L: ${Math.round(daily.temp.min)}°F`);
                 $('#hum'+i).text(`Humidity: ${daily.humidity}%`);
                 $('#con'+i).text(daily.weather[0].description);
                 $('#icon'+i).attr('src','http://openweathermap.org/img/wn/'+daily.weather[0].icon+'@2x.png');
