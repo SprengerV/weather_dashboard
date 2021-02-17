@@ -27,7 +27,6 @@ loadSaved = () => {
     };
     $('.city').on('click',function(){
         query = $(this).text();
-        console.log(query);
         getCoords(query);
     });
 };
@@ -52,10 +51,8 @@ $(window).on('load',function(){
     $('#searchBtn').on('click', function(event){
         event.preventDefault();
         query = $('#searchBox').val();
-        console.log(query);
         if(query){
             getCoords(query);
-            console.log(saved)
             saved.unshift(query);
             localStorage.setItem('savedCities', JSON.stringify(saved));
         };
@@ -67,7 +64,7 @@ $(window).on('load',function(){
 // API call to search input query and find coordinates
 function getCoords(query){
     $.ajax({
-        url: 'http://api.positionstack.com/v1/forward',
+        url: 'https://cors-anywhere.herokuapp.com/http://api.positionstack.com/v1/forward',
         data: {
           access_key: '1665e6e9379ebb7b035db50a9c23beec',
           query: query,

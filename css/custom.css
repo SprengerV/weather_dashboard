@@ -8,6 +8,10 @@ body{
     position: static;
     y: -500;
 }
+.city {
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
 .icon-color {
     background-color:#94536d !important;
 }
@@ -30,8 +34,8 @@ body{
     background-color: red;
 }
 #fiveDay {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 #background {
     background-image: url(#!);
@@ -48,6 +52,10 @@ body{
     }
 #s {
     font-family: 'Shadows Into Light', cursive;
+}
+#search {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 #support {
     margin-top: 15vh;
